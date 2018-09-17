@@ -38,7 +38,7 @@ h1{
 }
 
 body{
-    background-image: url(travel.jpeg);
+    background-image: url(../images/travel.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
