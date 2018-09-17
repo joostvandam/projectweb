@@ -100,10 +100,36 @@ body button:active {
     top: 0.1em;
 }
 
+/**
+Micro-interaction 1 - Highlight from search
+ */
+#overview article {
+    -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
 #overview article.found {
     background-color: aqua;
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+
+/**
+Micro-interaction 2 - hide & show text of story
+ */
+#overview article {
+    max-height: 2000px;
+    opacity: 1;
+    transition: opacity 1s, max-height 1s ease-in;
+}
+#overview article.small {
+    max-height: 8em;
+    min-width: 25em;
+    transition: max-height 1s ease-out;
+}
+#overview article.small :not(h3) {
+    opacity: 0;
+    display: none;
+    transition: opacity 1s ease-out;
 }
 
 /*Media querie smartphone*/

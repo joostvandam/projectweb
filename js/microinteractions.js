@@ -11,15 +11,33 @@ function searchClicked() {
     let titles = document.querySelectorAll("#overview article h3");
     let articles = document.querySelectorAll("#overview article");
     for(let i = 0; i < titles.length; i++) {
-        let title = titles[i];
-        if (title.innerText.toLowerCase().indexOf(searchQuery.toLowerCase()) === -1) {
-            articles[i].classList.remove("found");
-            continue;
+        let title = titles[i].innerText;
+        if (title.toLowerCase().indexOf(searchQuery.toLowerCase()) === -1) { // If title doesn't match
+            articles[i].classList.remove("found"); // Remove the found class
         }
-        articles[i].classList.add("found");
+        else {
+            articles[i].classList.add("found"); // Else add the found class
+        }
     }
 }
 
+
+function mouseEvent() {
+    /**
+     * Make all articles small, once you hover over them, make them larger again.
+     */
+    for(let article of document.querySelectorAll("#overview article")) {
+        article.classList.add("small");
+        article.addEventListener("mouseover", onMouseOver, false);
+        article.addEventListener("mouseout", onMouseOut, false);
+    }
+}
+function onMouseOver(event) {
+    this.classList.remove("small")
+}
+function onMouseOut(event) {
+    this.classList.add("small")
+}
 
 /**
  * Instead of using jQuery and the command:
@@ -30,5 +48,6 @@ function searchClicked() {
  */
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".klik").addEventListener("click", searchClicked);
+    mouseEvent();
 });
 
