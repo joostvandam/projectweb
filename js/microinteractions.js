@@ -10,8 +10,8 @@ function searchClicked() {
      * Color all the matching articles aqua.
      */
     let searchQuery = document.querySelector(".zoeken input").value;
-    let titles = document.querySelectorAll("#overview article h3");
-    let articles = document.querySelectorAll("#overview article");
+    let titles = document.querySelectorAll(".overview article h3");
+    let articles = document.querySelectorAll(".overview article");
     for(let i = 0; i < titles.length; i++) {
         let title = titles[i].textContent;
         if (title.toLowerCase().indexOf(searchQuery.toLowerCase()) === -1) { // If title doesn't match
@@ -21,7 +21,7 @@ function searchClicked() {
             articles[i].classList.add("found"); // Else add the found class
         }
     }
-    checkboxChange(document.querySelector("input[id=filter-check]")); // Filter boxes if checked.
+    checkboxChange(document.querySelector("input[class=filter-check]")); // Filter boxes if checked.
 }
 
 /**
@@ -31,7 +31,7 @@ function mouseEvent() {
     /**
      * Make all articles small, once you hover over them, make them larger again.
      */
-    for(let article of document.querySelectorAll("#overview article")) {
+    for(let article of document.querySelectorAll(".overview article")) {
         article.classList.add("small");
         article.addEventListener("mouseover", onMouseOver, false);
         article.addEventListener("mouseout", onMouseOut, false);
@@ -51,7 +51,7 @@ function checkboxChange(elem) {
     /**
      * Hide not found text boxed when checked and searched.
      */
-    let articles = [...document.querySelectorAll("#overview article")]; // Get all articles and convert NodeList to array (https://stackoverflow.com/a/32767009)
+    let articles = [...document.querySelectorAll(".overview article")]; // Get all articles and convert NodeList to array (https://stackoverflow.com/a/32767009)
     let articles_to_show = articles.filter(article => article.classList.contains("found")); // Find all articles that do have the class "found" in them
     if(elem.checked && articles_to_show.length > 0) { // If filter is checked, and there are some found you can hide
         let articles_to_hide = articles.filter(article => !article.classList.contains("found")); // Find all articles that do NOT have the class "found" in them
@@ -74,6 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
     mouseEvent();
 
 
-    document.querySelector("input[id=filter-check]").addEventListener( 'change', function() {checkboxChange(this)});
+    document.querySelector("input[class=filter-check]").addEventListener( 'change', function() {checkboxChange(this)});
 });
 
