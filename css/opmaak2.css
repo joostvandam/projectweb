@@ -167,6 +167,9 @@ Micro-transaction 3 - Hide on filter
     opacity: 0;
     transition: visibility 1s, opacity 0.5s linear;
 }
+.overview article.upper h3, .overview article.upper p{
+    text-transform: uppercase;
+}
 /*Media querie smartphone*/
 
 @media (max-width: 37.5em) {
