@@ -66,7 +66,16 @@ h3 {
     color: rgb(104, 209, 119);
 }
 
-body section input {
+body .zoeken {
+    display: flex;
+    flex-direction: row;
+}
+
+body .zoeken .search {
+    margin-right: 1em;
+    width: 80%;
+}
+body .zoeken input {
     font-size: 1em;
     padding: 0.5em;
     margin-left: 1em;
@@ -74,11 +83,8 @@ body section input {
     border-radius: 0.6em;
     font-family: 'Montserrat', sans-serif;
 }
-body section input.search {
-    width: 80%;
-}
 
-body section label {
+body .zoeken label {
     background-color: rgb(232, 72, 106);
     color: white;
     border: 0;
@@ -93,10 +99,9 @@ body section label {
     text-decoration: none;
 }
 
-body section label input.filter-check {
+body .zoeken label input.filter-check {
     visibility: hidden;
 }
-
 
 body button {
     background-color: rgb(232, 72, 106);
@@ -123,14 +128,7 @@ body button:active {
     position: relative;
     top: 0.1em;
 }
-body .zoeken {
-    display: flex;
-    flex-direction: row;
-}
 
-body .zoeken .search {
-    margin-right: 1em;
-}
 /**
 Micro-interaction 1 - Highlight from search
  */
@@ -180,7 +178,6 @@ Micro-transaction 3 - Hide on filter
 /*Media querie smartphone*/
 
 @media (max-width: 37.5em) {
-
     header {
         position: fixed;
         top: 0;
@@ -307,7 +304,7 @@ Micro-transaction 3 - Hide on filter
         top: 0.1em;
     }
 
-    body > section {
+    body > section, body .zoeken {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -366,7 +363,7 @@ Micro-transaction 3 - Hide on filter
         top: 0.1em;
     }
 
-    body > section {
+    body > section, body .zoeken {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
