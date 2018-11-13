@@ -24,22 +24,11 @@ function searchClicked() {
     checkboxChange(document.querySelector("input[class=filter-check]")); // Filter boxes if checked.
 }
 
-function likeArticle(elem) {
-    elem.classList.toggle("mdi-heart-outline");
-    elem.classList.toggle("mdi-heart");
-    let num = document.getElementsByClassName("mdi-heart").length;
-    document.documentElement.style.setProperty('--content', "'"+num+"'");
-}
-
 function readArticle(elem) {
     let storyDiv = elem.parentElement.getElementsByClassName("story");
     if(storyDiv.length === 0) { return; }
     storyDiv = storyDiv[0];
     storyDiv.getElementsByClassName("rest")[0].classList.toggle("hidden");
-    // storyDiv = storyDiv[0].getElementsByTagName("div");
-    // for(let item of storyDiv) {
-    //     item.classList.toggle("hidden");
-    // }
 }
 
 /**
@@ -81,6 +70,33 @@ function checkboxChange(elem) {
 }
 
 /**
+ * Micro-transaction 4 - Like article & store to local storage
+ */
+function microInteraction5() {
+    for(let elem of document.querySelectorAll(".mdi")) {
+        elem.addEventListener("click", function() {likeArticle(this)});
+    }
+
+    for (let i = 0; i < localStorage.length; i++){
+        let key = localStorage.key(i);
+        let bool = JSON.parse(localStorage.getItem(key));
+        let elem = document.getElementById(key).getElementsByClassName("mdi")[0];
+        setLiked(elem, bool);
+    }
+}
+function likeArticle(elem) {
+    let liked = elem.classList.toggle("liked");
+    localStorage.setItem(elem.parentElement.parentElement.id, JSON.stringify(liked));
+    setLiked(elem, liked);
+}
+function setLiked(elem, liked) {
+    elem.classList.toggle("mdi-heart-outline", !liked);
+    elem.classList.toggle("mdi-heart", liked);
+    let num = document.getElementsByClassName("mdi-heart").length;
+    document.documentElement.style.setProperty('--content', "'"+num+"'");
+}
+
+/**
  * Instead of using jQuery and the command:
  *  $(document).ready({
  *      //code here
@@ -97,8 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
         elem.addEventListener("click", function() {readArticle(this)});
     }
 
-    for(let elem of document.querySelectorAll(".mdi")) {
-        elem.addEventListener("click", function() {likeArticle(this)});
-    }
+    microInteraction5();
+
 });
 
