@@ -4,13 +4,18 @@
     padding: 0;
 }
 
+:root {
+    --article-header-width: 25rem;
+    --header-height: 7em;
+}
+
 header {
     position: fixed;
     top: 0;
     width: 100%;
     background-color: #fff;
     padding-left: 0;
-    height: 7em;
+    height: var(--header-height);
     padding-top: .5em;
     box-shadow: 0 .375em .313em 0 rgba(235, 235, 235, 0.54);
 }
@@ -70,10 +75,14 @@ body .zoeken {
     display: flex;
     flex-direction: row;
 }
+body .zoeken form {
+    width: var(--article-header-width);
+    display: flex;
+}
 
 body .zoeken .search {
     margin-right: 1em;
-    width: 80%;
+    width: 100%;
 }
 body .zoeken input {
     font-size: 1em;
@@ -153,7 +162,7 @@ Micro-interaction 2 - hide & show text of story
 }
 .overview article.small {
     max-height: 8em;
-    min-width: 25em;
+    min-width: var(--article-header-width);
     transition: all 1s;
 }
 .overview article.small :not(h3) {
@@ -273,8 +282,8 @@ Micro-transaction 3 - Hide on filter
         padding: 2em;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 1em;
-        min-width: 16em;
-        max-width: 40em;
+        min-width: var(--article-header-width);
+        max-width: var(--article-header-width);
         margin: 1.2em 1em;
     }
 
@@ -335,7 +344,6 @@ Micro-transaction 3 - Hide on filter
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-        justify-content: center;
         padding: 1.5em;
         flex-wrap: wrap;
     }
@@ -350,8 +358,8 @@ Micro-transaction 3 - Hide on filter
         padding: 1.5em;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 1em;
-        max-width: 25em;
-        min-width: 16em;
+        max-width: var(--article-header-width);
+        min-width: var(--article-header-width);
     }
 
     .overview article .story {
@@ -359,12 +367,12 @@ Micro-transaction 3 - Hide on filter
         padding: 1.5em;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 1em;
-        /*max-width: 25em;*/
-        min-width: 16em;
+        /*max-width: var(--article-header-width);*/
+        min-width: var(--article-header-width);
 
         position: fixed;
-        left: 32em;
-        top: 27%;
+        left: calc( var(--article-header-width) + 12rem );
+        top: var(--header-height);
     }
 
     .overview article .story div {
