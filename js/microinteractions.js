@@ -24,6 +24,17 @@ function searchClicked() {
     checkboxChange(document.querySelector("input[class=filter-check]")); // Filter boxes if checked.
 }
 
+function readArticle(elem) {
+    let storyDiv = elem.parentElement.getElementsByClassName("story");
+    if(storyDiv.length === 0) { return; }
+    storyDiv = storyDiv[0];
+    storyDiv.getElementsByClassName("rest")[0].classList.toggle("hidden");
+    // storyDiv = storyDiv[0].getElementsByTagName("div");
+    // for(let item of storyDiv) {
+    //     item.classList.toggle("hidden");
+    // }
+}
+
 /**
  * Micro-transaction 2 - Hover over boxes
  */
@@ -73,7 +84,10 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".klik").addEventListener("click", searchClicked);
     mouseEvent();
 
-
     document.querySelector("input[class=filter-check]").addEventListener( 'change', function() {checkboxChange(this)});
+
+    for(let elem of document.querySelectorAll(".read")) {
+        elem.addEventListener("click", function() {readArticle(this)});
+    }
 });
 

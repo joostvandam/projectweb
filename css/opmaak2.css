@@ -138,6 +138,7 @@ Micro-interaction 1 - Highlight from search
 }
 .overview article.found {
     background-color: aqua;
+    border-radius: 1em;
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
@@ -148,17 +149,17 @@ Micro-interaction 2 - hide & show text of story
 .overview article {
     max-height: 2000px;
     opacity: 1;
-    transition: opacity 1s, max-height 1s ease-in;
+    transition: all 1s;
 }
 .overview article.small {
     max-height: 8em;
     min-width: 25em;
-    transition: max-height 1s ease-out;
+    transition: all 1s;
 }
 .overview article.small :not(h3) {
     opacity: 0;
     display: none;
-    transition: opacity 1s ease-out;
+    transition: all 1s;
 }
 
 /**
@@ -167,10 +168,11 @@ Micro-transaction 3 - Hide on filter
 .overview article.hide {
     visibility: visible;
 }
-.overview article.hide {
+.overview article.hide, .story .hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s, opacity 0.5s linear;
+    font-size: 0;
+    transition: all 1s linear;
 }
 .overview article.upper h3, .overview article.upper p{
     text-transform: uppercase;
@@ -326,14 +328,52 @@ Micro-transaction 3 - Hide on filter
 }
 
 @media (min-width: 62.5em) {
-
-    section > article {
+    body .overview {
+        flex-direction: column;
+    }
+    .overview, .zoeken {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 1.5em;
+        flex-wrap: wrap;
+    }
+    body .overview article {
+        order: 10;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+    }
+    .overview article h3 {
         margin: 1.2em;
-        padding: 2em;
+        padding: 1.5em;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 1em;
         max-width: 25em;
         min-width: 16em;
+    }
+
+    .overview article .story {
+        margin: 1.2em;
+        padding: 1.5em;
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 1em;
+        /*max-width: 25em;*/
+        min-width: 16em;
+
+        position: fixed;
+        left: 32em;
+        top: 27%;
+    }
+
+    .overview article .story div {
+        transition: all 1s linear;
+
+    }
+    .overview article .story div p {
+        margin-bottom: 1em;
+        font-size: 1em;
     }
 
     article a {
@@ -363,14 +403,8 @@ Micro-transaction 3 - Hide on filter
         top: 0.1em;
     }
 
-    body > section, body .zoeken {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 1.5em;
-        flex-wrap: wrap;
 
-    }
+
+
 
 }
