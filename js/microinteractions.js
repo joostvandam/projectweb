@@ -24,6 +24,13 @@ function searchClicked() {
     checkboxChange(document.querySelector("input[class=filter-check]")); // Filter boxes if checked.
 }
 
+function likeArticle(elem) {
+    elem.classList.toggle("mdi-heart-outline");
+    elem.classList.toggle("mdi-heart");
+    let num = document.getElementsByClassName("mdi-heart").length;
+    document.documentElement.style.setProperty('--content', "'"+num+"'");
+}
+
 function readArticle(elem) {
     let storyDiv = elem.parentElement.getElementsByClassName("story");
     if(storyDiv.length === 0) { return; }
@@ -88,6 +95,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     for(let elem of document.querySelectorAll(".read")) {
         elem.addEventListener("click", function() {readArticle(this)});
+    }
+
+    for(let elem of document.querySelectorAll(".mdi")) {
+        elem.addEventListener("click", function() {likeArticle(this)});
     }
 });
 
