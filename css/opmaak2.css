@@ -145,8 +145,12 @@ Micro-interaction 1 - Highlight from search
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
+.overview article:not(.small) {
+    background-color: rgba(128,128,128,0.6);
+    border-radius: 1em;
+}
 .overview article.found {
-    background-color: aqua;
+    background-color: rgba(28,28,128,0.75);
     border-radius: 1em;
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
@@ -165,7 +169,7 @@ Micro-interaction 2 - hide & show text of story
     min-width: var(--article-header-width);
     transition: all 1s;
 }
-.overview article.small :not(h3) {
+.overview article.small :not(.title):not(h3) {
     opacity: 0;
     display: none;
     transition: all 1s;
