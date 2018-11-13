@@ -164,10 +164,7 @@ Micro-interaction 1 - Highlight from search
     -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
-.overview article:not(.small) {
-    background-color: rgba(128,128,128,0.6);
-    border-radius: 1em;
-}
+
 .overview article.found {
     background-color: rgba(28,28,128,0.75);
     border-radius: 1em;
@@ -193,7 +190,10 @@ Micro-interaction 2 - hide & show text of story
     display: none;
     transition: all 1s;
 }
-
+.overview article .title {
+    display: flex;
+    justify-content: space-between;
+}
 /**
 Micro-transaction 3 - Hide on filter
  */
@@ -377,14 +377,17 @@ Micro-transaction 3 - Hide on filter
         align-items: center;
     }
     .overview article .title {
-        display: flex;
-        justify-content: space-between;
         margin: 1.2em;
         padding: 1.5em;
         background-color: rgba(255, 255, 255, 1);
         border-radius: 1em;
         max-width: var(--article-header-width);
         min-width: var(--article-header-width);
+    }
+
+    .overview article:not(.small):not(.found) {
+        background-color: rgba(128,128,128,0.6);
+        border-radius: 1em;
     }
 
     .overview article .story {
